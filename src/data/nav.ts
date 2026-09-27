@@ -1,10 +1,6 @@
 export const sections = [
-  { id: 'story', label: '소개', en: 'Story', inHeader: true },
-  { id: 'signature', label: '오늘뭐먹지', en: 'Signature', inHeader: true },
   { id: 'menu', label: '차림표', en: 'Menu', inHeader: true },
-  { id: 'table', label: '상차림', en: 'The Table', inHeader: false },
-  { id: 'rooms', label: '매장', en: 'Rooms', inHeader: true },
-  { id: 'butcher', label: '정육점', en: 'Butcher', inHeader: true },
+  { id: 'signature', label: '오늘뭐먹지', en: 'Signature', inHeader: true },
   { id: 'visit', label: '오시는 길', en: 'Visit', inHeader: true },
 ] as const;
 

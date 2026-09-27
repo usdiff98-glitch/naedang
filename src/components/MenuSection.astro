@@ -3,7 +3,7 @@ import boardPhoto from '../assets/photos/menu-board.jpg';
 import saeusalPhoto from '../assets/photos/saeusal-plate.jpg';
 import salchisalPhoto from '../assets/photos/salchisal-plate.jpg';
 import naengmyeonPhoto from '../assets/photos/mul-naengmyeon.jpg';
-import { formatPrice, info, mealMenu, meatMenu, menuBoardStatement, packaging } from '../data/restaurant';
+import { info, mealMenu, meatMenu } from '../data/restaurant';
 import MenuItemRow from './MenuItemRow.astro';
 import Photo from './Photo.astro';
 import SectionLabel from './SectionLabel.astro';
@@ -37,12 +37,6 @@ const strip = [
         <h2 id="menu-title" class="mt-8 font-display text-[clamp(2.6rem,6.5vw,4.75rem)] font-normal leading-[1.1] tracking-[-0.02em]" data-reveal="ink">
           차림표
         </h2>
-        <blockquote class="mt-8 max-w-2xl border-l border-gold-600/60 pl-6 font-display text-[1.1rem] leading-[1.9] text-ink-800 lg:text-[1.25rem]" data-reveal style="--delay:120ms">
-          “{menuBoardStatement}”
-        </blockquote>
-        <p class="mt-4 pl-6 text-[0.8rem] tracking-[0.08em] text-ink-500" data-reveal style="--delay:160ms">
-          메뉴판 맨 위에 적어 둔 글
-        </p>
       </div>
       <figure class="hidden lg:col-span-4 lg:col-start-9 lg:block">
         <Photo
@@ -51,9 +45,6 @@ const strip = [
           sizes="30vw"
           class="aspect-[3/2] w-full"
         />
-        <figcaption class="mt-3 text-right text-[0.75rem] tracking-[0.08em] text-ink-500">
-          매장 차림표 (2026년 4월)
-        </figcaption>
       </figure>
     </div>
 
@@ -77,7 +68,6 @@ const strip = [
         <div>
           <div class="flex items-baseline justify-between border-b border-ink-900/80 pb-4">
             <h3 class="font-display text-[1.5rem] font-medium tracking-[0.2em]">식사류</h3>
-            <p class="text-[0.8rem] tracking-[0.14em] text-ink-500">계절 메뉴 포함</p>
           </div>
           <ul class="mt-6 divide-y divide-ink-900/8">
             {mealMenu.map((item) => <MenuItemRow item={item} />)}
@@ -85,13 +75,8 @@ const strip = [
         </div>
       </div>
 
-      <div class="flex flex-col gap-3 border-t border-ink-900/10 px-5 py-6 text-[0.8rem] leading-relaxed text-ink-500 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-16 xl:px-20">
-        <p>
-          <time datetime={info.menuUpdated.iso}>{info.menuUpdated.label}</time> 기준 가격이에요. 술과 음료 가격은 매장에 물어봐 주세요.
-        </p>
-        <a href="#butcher" class="link-arrow shrink-0 self-start text-ink-800 lg:self-auto">
-          {packaging.join(' · ')} 안내
-        </a>
+      <div class="border-t border-ink-900/10 px-5 py-6 text-[0.8rem] leading-relaxed text-ink-500 sm:px-10 lg:px-16 xl:px-20">
+        <p><time datetime={info.menuUpdated.iso}>{info.menuUpdated.label}</time> 기준 가격</p>
       </div>
     </div>
 
@@ -101,15 +86,7 @@ const strip = [
           <li class="relative w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-auto">
             <figure>
               <Photo src={s.src} alt={s.alt} sizes="(min-width: 64rem) 28vw, 78vw" class="aspect-[4/3]" delay={i * 110} />
-              <figcaption class="mt-4 flex items-baseline justify-between gap-4">
-                <span class="font-display text-[1.1rem]">
-                  {s.item.name} {s.item.tag && <span class="ml-1 text-[0.75rem] text-ink-500">{s.item.tag}</span>}
-                </span>
-                <span class="tabular text-[0.9rem] text-ink-500">
-                  {s.item.weight && `${s.item.weight} · `}
-                  {formatPrice(s.item.price)}원
-                </span>
-              </figcaption>
+              <figcaption class="mt-4 font-display text-[1.1rem]">{s.item.name}</figcaption>
             </figure>
           </li>
         ))

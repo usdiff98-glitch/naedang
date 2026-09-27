@@ -26,7 +26,7 @@ export const info = {
     breakStart: '15:00',
     breakEnd: '17:00',
   },
-  holiday: '설날·추석 연휴 3일은 쉽니다',
+  holiday: '설날·추석 연휴 3일 휴무',
   parking: '식당 맞은편 홍주성(역사공원) 옆 공영주차장',
   payment: '신용카드',
   links: {
@@ -55,7 +55,7 @@ export const meatMenu: MenuItem[] = [
     price: 45000,
     signature: true,
     detail: '내당한우 스페셜 메뉴(부채·치마·갈비)',
-    note: '상황에 따라 등심으로 바뀔 수 있어요',
+    note: '상황에 따라 등심으로 바뀔 수 있음',
   },
   { name: '안창', weight: '150g', price: 60000 },
   { name: '살치살', weight: '150g', price: 60000 },

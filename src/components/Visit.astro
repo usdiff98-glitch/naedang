@@ -1,13 +1,11 @@
 ---
-import { hongjuFortress, info, quotes } from '../data/restaurant';
+import gatePhoto from '../assets/photos/exterior-gate.jpg';
+import courtyardPhoto from '../assets/photos/salchisal-courtyard.jpg';
+import { info } from '../data/restaurant';
 import Icon from './Icon.astro';
+import Photo from './Photo.astro';
 import SectionLabel from './SectionLabel.astro';
 import Seal from './Seal.astro';
-
-const coord = (n: number, pos: string, neg: string) => `${Math.abs(n).toFixed(4)}° ${n >= 0 ? pos : neg}`;
-
-const fortressNote = `${hongjuFortress.rebuilt}에 고쳐 쌓은 읍성이에요. ${hongjuFortress.landmarks.join(', ')}을 둘러볼 수 있고, ${hongjuFortress.nearby.join('과 ')}도 있어요.`;
-const regionNote = `백제 때는 우견현, 통일신라 때는 목우현이라고 불렸을 만큼 옛날부터 소를 많이 키운 곳이에요. 시간 되시면 ${hongjuFortress.regional.join('이나 ')}도 다녀오세요.`;
 ---
 
 <section id="visit" class="surface-hanji section-y relative" aria-labelledby="visit-title">
@@ -24,9 +22,6 @@ const regionNote = `백제 때는 우견현, 통일신라 때는 목우현이라
             <dt><Icon name="pin" class="text-gold-700" />주소</dt>
             <dd>
               <p class="font-display text-[1.3rem] leading-snug text-ink-900 lg:text-[1.5rem]">{info.address.road}</p>
-              <p class="mt-2 text-[0.9rem] text-ink-500">
-                지번 {info.address.jibun.replace('충남 홍성군 홍성읍 ', '')} · 우편번호 <span class="tabular">{info.address.postalCode}</span>
-              </p>
               <button
                 type="button"
                 class="copy-btn mt-4 inline-flex min-h-11 items-center gap-2 border border-ink-900/20 px-4 text-[0.85rem] text-ink-700 transition-colors hover:border-ink-900"
@@ -44,10 +39,7 @@ const regionNote = `백제 때는 우견현, 통일신라 때는 목우현이라
               <a href={info.phoneHref} class="tabular font-display text-[1.6rem] leading-none text-ink-900 underline decoration-gold-600/50 decoration-1 underline-offset-[0.35em] transition-colors hover:text-gold-700 lg:text-[1.9rem]">
                 {info.phone}
               </a>
-              <p class="mt-4 max-w-md text-[0.95rem] leading-[1.85] text-ink-500">
-                예약은 전화로 받아요. 주말에는 예약하고 오시는 게 좋아요.
-              </p>
-              <p class="mt-2 text-[0.85rem] text-ink-500">“{quotes.reservation}”</p>
+              <p class="mt-4 text-[0.95rem] leading-[1.85] text-ink-500">예약은 전화로 받아요.</p>
             </dd>
           </div>
 
@@ -71,23 +63,6 @@ const regionNote = `백제 때는 우견현, 통일신라 때는 목우현이라
                   </tr>
                 </tbody>
               </table>
-              <div class="open-status mt-5" data-open-status hidden>
-                <p class="flex items-center gap-2.5 text-[0.85rem] text-ink-700">
-                  <span class="status-dot h-2 w-2 shrink-0 rounded-full" aria-hidden="true"></span>
-                  <span data-open-status-text></span>
-                </p>
-                <p class="mt-1 pl-[1.125rem] text-[0.75rem] leading-relaxed text-ink-500">
-                  설날·추석 연휴에 쉬는 건 반영되지 않아요.
-                </p>
-              </div>
-            </dd>
-          </div>
-
-          <div class="visit-row" data-reveal>
-            <dt><Icon name="car" class="text-gold-700" />주차</dt>
-            <dd>
-              <p class="text-[1.05rem] leading-[1.8] text-ink-900">{info.parking}에 세우시면 돼요.</p>
-              <p class="mt-2 text-[0.9rem] leading-[1.8] text-ink-500">주차비나 주차권은 전화로 물어봐 주세요.</p>
             </dd>
           </div>
         </dl>
@@ -106,32 +81,18 @@ const regionNote = `백제 때는 우견현, 통일신라 때는 목우현이라
           </svg>
 
           <div class="relative">
-            <div class="flex items-start justify-between">
-              <Seal class="h-20 w-auto" />
-              <p class="tabular text-right text-[0.72rem] leading-relaxed tracking-[0.14em] text-hanji-400">
-                {coord(info.geo.lat, 'N', 'S')}<br />
-                {coord(info.geo.lng, 'E', 'W')}
-              </p>
-            </div>
-
-            <p class="mt-14 text-[0.75rem] tracking-[0.3em] text-gold-400">홍주읍성 맞은편</p>
-            <p class="mt-3 font-display text-[1.7rem] leading-snug text-hanji-50">내당한우</p>
-            <p class="mt-2 text-[0.95rem] leading-relaxed text-hanji-300">{info.address.road}</p>
-
-            <div class="mt-10 grid gap-3">
+            <Seal class="h-20 w-auto" />
+            <p class="mt-12 text-[0.75rem] tracking-[0.3em] text-gold-400">길찾기</p>
+            <div class="mt-5 grid gap-3">
               <a href={info.links.naverPlace} target="_blank" rel="noopener" class="btn btn-gold justify-between">
-                <span class="flex items-center gap-2.5"><Icon name="map" />네이버 지도에서 보기</span>
+                <span class="flex items-center gap-2.5"><Icon name="map" />네이버 지도</span>
                 <Icon name="external" size={16} />
                 <span class="sr-only">(새 창)</span>
               </a>
               <a href={info.links.kakaoMap} target="_blank" rel="noopener" class="btn btn-line-light justify-between">
-                <span class="flex items-center gap-2.5"><Icon name="map" />카카오맵에서 보기</span>
+                <span class="flex items-center gap-2.5"><Icon name="map" />카카오맵</span>
                 <Icon name="external" size={16} />
                 <span class="sr-only">(새 창)</span>
-              </a>
-              <a href={info.phoneHref} class="btn btn-line-light justify-between tabular">
-                <span class="flex items-center gap-2.5"><Icon name="phone" />전화로 길 묻기</span>
-                <span class="hidden text-[0.85rem] text-hanji-300 min-[380px]:inline">{info.phone}</span>
               </a>
             </div>
           </div>
@@ -139,28 +100,22 @@ const regionNote = `백제 때는 우견현, 통일신라 때는 목우현이라
       </div>
     </div>
 
-    <div class="mt-28 border-t border-ink-900/12 pt-14 lg:mt-36">
-      <div class="grid gap-y-12 lg:grid-cols-12 lg:gap-x-16">
-        <div class="lg:col-span-4">
-          <p class="eyebrow text-gold-700" data-reveal>Nearby</p>
-          <h3 class="mt-6 font-display text-[clamp(1.8rem,3.6vw,2.5rem)] font-normal leading-[1.35]" data-reveal="ink">
-            근처에<br />가 볼 만한 곳
-          </h3>
-        </div>
-
-        <div class="grid gap-y-10 sm:grid-cols-2 sm:gap-x-10 lg:col-span-8">
-          <article data-reveal>
-            <h4 class="font-display text-[1.25rem] font-medium">{hongjuFortress.name}</h4>
-            <p class="mt-1 text-[0.8rem] tracking-[0.1em] text-gold-700">사적 · 식당 맞은편</p>
-            <p class="mt-4 text-[0.95rem] leading-[1.9] text-ink-500">{fortressNote}</p>
-          </article>
-          <article data-reveal style="--delay:100ms">
-            <h4 class="font-display text-[1.25rem] font-medium">홍성과 소</h4>
-            <p class="mt-1 text-[0.8rem] tracking-[0.1em] text-gold-700">홍성 이야기</p>
-            <p class="mt-4 text-[0.95rem] leading-[1.9] text-ink-500">{regionNote}</p>
-          </article>
-        </div>
-      </div>
+    <div class="mt-20 grid gap-4 sm:grid-cols-2 lg:mt-28 lg:gap-8">
+      <Photo
+        src={gatePhoto}
+        alt="內堂, 내당, 한우생고기 전문점이라고 적힌 아치형 간판과 나무 대문"
+        sizes="(min-width: 40rem) 50vw, 100vw"
+        class="aspect-[4/3]"
+        position="50% 42%"
+      />
+      <Photo
+        src={courtyardPhoto}
+        alt="돌담과 한옥 앞에서 들고 찍은 한우 살치살 한 접시"
+        sizes="(min-width: 40rem) 50vw, 100vw"
+        class="aspect-[4/3]"
+        position="48% 50%"
+        delay={110}
+      />
     </div>
   </div>
 </section>
@@ -220,24 +175,6 @@ const regionNote = `백제 때는 우견현, 통일신라 때는 목우현이라
   .hours tr:last-child th,
   .hours tr:last-child td {
     border-bottom: 0;
-  }
-
-  .status-dot {
-    background: var(--color-ink-400);
-  }
-
-  .open-status[data-state='open'] .status-dot {
-    background: #4f7d5c;
-    box-shadow: 0 0 0 4px color-mix(in oklab, #4f7d5c 18%, transparent);
-  }
-
-  .open-status[data-state='break'] .status-dot {
-    background: var(--color-gold-500);
-    box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-gold-500) 20%, transparent);
-  }
-
-  .open-status[data-state='closed'] .status-dot {
-    background: var(--color-seal-500);
   }
 
   .copy-btn[data-copied] {

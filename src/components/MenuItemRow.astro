@@ -15,7 +15,6 @@ const badge = 'h-5 items-center bg-seal-500 px-1.5 text-[0.68rem] font-medium tr
     <span class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
       <span class="font-display text-[1.2rem] font-medium tracking-[0.02em] lg:text-[1.3rem]">{item.name}</span>{' '}
       {item.signature && <span class:list={[badge, 'relative -top-0.5 hidden sm:inline-flex']}>대표</span>}{' '}
-      {item.hanwoo && <span class="text-[0.75rem] tracking-[0.12em] text-gold-700">한우</span>}{' '}
       {
         item.tag && (
           <span class="relative -top-0.5 inline-flex h-5 items-center border border-ink-900/20 px-1.5 text-[0.68rem] tracking-[0.1em] text-ink-500">
@@ -32,6 +31,4 @@ const badge = 'h-5 items-center bg-seal-500 px-1.5 text-[0.68rem] font-medium tr
       </span>
     </span>
   </div>
-  {item.detail && <p class="mt-1.5 text-[0.85rem] leading-relaxed text-ink-500">{item.detail}</p>}
-  {item.note && <p class="mt-1 text-[0.8rem] leading-relaxed text-ink-500">{item.signature ? `* ${item.note}` : item.note}</p>}
 </li>

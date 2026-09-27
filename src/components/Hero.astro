@@ -20,39 +20,20 @@ import Seal from './Seal.astro';
         sizes="(min-width: 64rem) 46vw, 100vw"
         priority
         reveal={false}
-        class="hero-photo aspect-square sm:aspect-[4/3] lg:aspect-[1/1.02]"
+        class="hero-photo aspect-[5/6] sm:aspect-[4/3] lg:aspect-[1/1.02]"
         position="50% 55%"
       />
       <div aria-hidden="true" class="hero-photo-shade pointer-events-none absolute inset-0 lg:hidden"></div>
-      <figcaption
-        class="absolute bottom-6 right-[var(--gutter)] hidden items-center gap-3 text-[0.75rem] tracking-[0.2em] text-hanji-100/90 lg:right-5 lg:flex"
-      >
-        <span class="h-px w-8 bg-gold-400/80"></span>한우 살치살
-      </figcaption>
-      <p
-        aria-hidden="true"
-        class="vertical absolute -right-10 top-0 hidden font-display text-[0.8rem] tracking-[0.5em] text-hanji-400 xl:block"
-      >
-        홍주읍성 맞은편 · {info.signLine}
-      </p>
       <Seal class="hero-seal absolute -bottom-9 left-5 hidden h-24 w-auto drop-shadow-[0_6px_18px_rgba(0,0,0,.35)] lg:-left-7 lg:block" />
     </figure>
 
-    <div class="hero-copy relative z-10 -mt-20 sm:-mt-16 lg:order-1 lg:col-span-6 lg:mt-0">
-      <p class="hero-line eyebrow text-gold-400" style="--i:0">충남 홍성 · 홍주읍성 맞은편</p>
-
-      <h1 id="hero-title" class="mt-6 lg:mt-9">
+    <div class="hero-copy relative z-10 -mt-20 sm:-mt-16 lg:order-1 lg:col-span-6 lg:mt-0 lg:self-center">
+      <h1 id="hero-title">
         <HanjaMark class="hero-hanja block text-hanji-50" />
-        <span class="hero-line mt-3 flex items-center gap-4 font-display text-[1.35rem] font-medium tracking-[0.32em] lg:mt-5 lg:text-[1.6rem]" style="--i:2">
+        <span class="hero-line mt-3 block font-display text-[1.35rem] font-medium tracking-[0.32em] lg:mt-5 lg:text-[1.6rem]" style="--i:2">
           내당한우
-          <span class="h-px w-10 bg-hanji-100/35"></span>
-          <span class="font-sans text-[0.8rem] font-normal tracking-[0.2em] text-hanji-300 lg:text-[0.9rem]">{info.signLine}</span>
         </span>
       </h1>
-
-      <p class="hero-line mt-8 max-w-[26rem] font-display text-[1.3rem] font-light leading-[1.75] text-hanji-100 lg:mt-12 lg:max-w-none lg:text-[1.75rem]" style="--i:3">
-        고기는 한우만 씁니다.<br />편하게 오세요.
-      </p>
 
       <div class="hero-line mt-9 flex flex-wrap gap-3 lg:mt-12" style="--i:4">
         <a href={info.phoneHref} class="btn btn-gold tabular grow sm:grow-0">

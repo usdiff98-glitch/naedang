@@ -138,50 +138,6 @@ function initActionBar() {
   }
 }
 
-// Business hours are fixed in KST regardless of the visitor's own time zone.
-function initOpenStatus() {
-  const targets = document.querySelectorAll<HTMLElement>('[data-open-status]');
-  if (!targets.length) return;
-
-  const render = () => {
-    const parts = new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Asia/Seoul',
-      hour: '2-digit',
-      minute: '2-digit',
-      hourCycle: 'h23',
-    }).formatToParts(new Date());
-    const h = Number(parts.find((p) => p.type === 'hour')?.value ?? 0);
-    const m = Number(parts.find((p) => p.type === 'minute')?.value ?? 0);
-    const t = h * 60 + m;
-
-    let state: 'open' | 'break' | 'closed';
-    let text: string;
-    if (t >= 11 * 60 && t < 15 * 60) {
-      state = 'open';
-      text = '지금 영업 중이에요 · 15:00부터 브레이크타임';
-    } else if (t >= 15 * 60 && t < 17 * 60) {
-      state = 'break';
-      text = '지금은 브레이크타임이에요 · 17:00에 다시 열어요';
-    } else if (t >= 17 * 60 && t < 22 * 60) {
-      state = 'open';
-      text = '지금 영업 중이에요 · 22:00까지';
-    } else {
-      state = 'closed';
-      text = t < 11 * 60 ? '아직 영업 전이에요 · 11:00에 열어요' : '오늘 영업은 끝났어요 · 내일 11:00에 열어요';
-    }
-
-    targets.forEach((el) => {
-      el.dataset.state = state;
-      const label = el.querySelector('[data-open-status-text]');
-      if (label) label.textContent = text;
-      el.hidden = false;
-    });
-  };
-
-  render();
-  setInterval(render, 60_000);
-}
-
 function initCopy() {
   document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
     const label = btn.querySelector('[data-copy-label]');
@@ -207,7 +163,6 @@ initMobileMenu();
 initActiveSection();
 initReveal();
 initActionBar();
-initOpenStatus();
 initCopy();
 window.__naedangReady = true;
 
