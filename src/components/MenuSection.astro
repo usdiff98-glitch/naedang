@@ -1,0 +1,138 @@
+---
+import boardPhoto from '../assets/photos/menu-board.jpg';
+import saeusalPhoto from '../assets/photos/saeusal-plate.jpg';
+import salchisalPhoto from '../assets/photos/salchisal-plate.jpg';
+import naengmyeonPhoto from '../assets/photos/mul-naengmyeon.jpg';
+import { formatPrice, info, mealMenu, meatMenu, menuBoardStatement, packaging } from '../data/restaurant';
+import MenuItemRow from './MenuItemRow.astro';
+import Photo from './Photo.astro';
+import SectionLabel from './SectionLabel.astro';
+
+const byName = (name: string) => [...meatMenu, ...mealMenu].find((m) => m.name === name)!;
+
+const strip = [
+  {
+    src: saeusalPhoto,
+    alt: '흰 접시 위에 하트 모양으로 놓인 마블링 가득한 한우 새우살 네 점.',
+    item: byName('새우살'),
+  },
+  {
+    src: salchisalPhoto,
+    alt: '흰 접시에 둥글게 펼쳐 담은 한우 살치살. 눈꽃처럼 촘촘한 마블링.',
+    item: byName('살치살'),
+  },
+  {
+    src: naengmyeonPhoto,
+    alt: '놋그릇에 담긴 물냉면. 살얼음 육수 위에 면과 삶은 달걀, 채소 고명이 올라가 있다.',
+    item: byName('물냉면'),
+  },
+];
+---
+
+<section id="menu" class="surface-hanji section-y relative" aria-labelledby="menu-title">
+  <div class="container-site">
+    <div class="grid gap-y-12 lg:grid-cols-12 lg:items-end lg:gap-x-12">
+      <div class="lg:col-span-7">
+        <SectionLabel id="menu" />
+        <h2 id="menu-title" class="mt-8 font-display text-[clamp(2.6rem,6.5vw,4.75rem)] font-normal leading-[1.1] tracking-[-0.02em]" data-reveal="ink">
+          차림표
+        </h2>
+        <blockquote class="mt-8 max-w-2xl border-l border-gold-600/60 pl-6 font-display text-[1.1rem] leading-[1.9] text-ink-800 lg:text-[1.25rem]" data-reveal style="--delay:120ms">
+          “{menuBoardStatement}”
+        </blockquote>
+        <p class="mt-4 pl-6 text-[0.8rem] tracking-[0.08em] text-ink-500" data-reveal style="--delay:160ms">
+          — 매장 차림표 머리말
+        </p>
+      </div>
+      <figure class="hidden lg:col-span-4 lg:col-start-9 lg:block">
+        <Photo
+          src={boardPhoto}
+          alt="매장 벽에 걸린 코르크 판 차림표. 고기류와 식사류 가격이 적혀 있다."
+          sizes="30vw"
+          class="aspect-[3/2] w-full"
+        />
+        <figcaption class="mt-3 text-right text-[0.75rem] tracking-[0.08em] text-ink-500">
+          매장 차림표 (2026년 4월)
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="menu-card relative mt-14 lg:mt-20" data-reveal>
+      <svg aria-hidden="true" class="menu-corner left-0 top-0" viewBox="0 0 28 28"><path d="M0 0h28v2H2v26H0zM6 6h10v2H8v8H6z"></path></svg>
+      <svg aria-hidden="true" class="menu-corner right-0 top-0 rotate-90" viewBox="0 0 28 28"><path d="M0 0h28v2H2v26H0zM6 6h10v2H8v8H6z"></path></svg>
+      <svg aria-hidden="true" class="menu-corner bottom-0 right-0 rotate-180" viewBox="0 0 28 28"><path d="M0 0h28v2H2v26H0zM6 6h10v2H8v8H6z"></path></svg>
+      <svg aria-hidden="true" class="menu-corner bottom-0 left-0 -rotate-90" viewBox="0 0 28 28"><path d="M0 0h28v2H2v26H0zM6 6h10v2H8v8H6z"></path></svg>
+
+      <div class="grid gap-y-14 px-5 py-12 sm:px-10 lg:grid-cols-2 lg:gap-x-20 lg:px-16 lg:py-16 xl:px-20">
+        <div>
+          <div class="flex items-baseline justify-between border-b border-ink-900/80 pb-4">
+            <h3 class="font-display text-[1.5rem] font-medium tracking-[0.2em]">고기류</h3>
+            <p class="text-[0.8rem] tracking-[0.14em] text-gold-700">모두 한우</p>
+          </div>
+          <ul class="mt-6 divide-y divide-ink-900/8">
+            {meatMenu.map((item) => <MenuItemRow item={item} />)}
+          </ul>
+        </div>
+
+        <div>
+          <div class="flex items-baseline justify-between border-b border-ink-900/80 pb-4">
+            <h3 class="font-display text-[1.5rem] font-medium tracking-[0.2em]">식사류</h3>
+            <p class="text-[0.8rem] tracking-[0.14em] text-ink-500">계절 메뉴 포함</p>
+          </div>
+          <ul class="mt-6 divide-y divide-ink-900/8">
+            {mealMenu.map((item) => <MenuItemRow item={item} />)}
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3 border-t border-ink-900/10 px-5 py-6 text-[0.8rem] leading-relaxed text-ink-500 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-16 xl:px-20">
+        <p>
+          가격은 <time datetime={info.menuUpdated.iso}>{info.menuUpdated.label}</time> 기준이며, 시기와 매장 사정에 따라 달라질 수
+          있습니다. 주류·음료 가격은 매장에 문의해 주세요.
+        </p>
+        <a href="#butcher" class="link-arrow shrink-0 self-start text-ink-800 lg:self-auto">
+          {packaging.join(' · ')} 안내
+        </a>
+      </div>
+    </div>
+
+    <ul class="-mx-[var(--gutter)] mt-16 flex snap-x snap-mandatory scroll-px-[var(--gutter)] gap-4 overflow-x-auto px-[var(--gutter)] pb-2 [scrollbar-width:none] lg:mx-0 lg:mt-24 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0" aria-label="메뉴 사진">
+      {
+        strip.map((s, i) => (
+          <li class="relative w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-auto">
+            <figure>
+              <Photo src={s.src} alt={s.alt} sizes="(min-width: 64rem) 28vw, 78vw" class="aspect-[4/3]" delay={i * 110} />
+              <figcaption class="mt-4 flex items-baseline justify-between gap-4">
+                <span class="font-display text-[1.1rem]">
+                  {s.item.name} {s.item.tag && <span class="ml-1 text-[0.75rem] text-ink-500">{s.item.tag}</span>}
+                </span>
+                <span class="tabular text-[0.9rem] text-ink-500">
+                  {s.item.weight && `${s.item.weight} · `}
+                  {formatPrice(s.item.price)}원
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .menu-card {
+    background-color: color-mix(in oklab, var(--color-hanji-50) 70%, transparent);
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--color-gold-600) 35%, transparent),
+      inset 0 0 0 6px color-mix(in oklab, var(--color-hanji-100) 100%, transparent),
+      inset 0 0 0 7px color-mix(in oklab, var(--color-gold-600) 22%, transparent);
+  }
+
+  .menu-corner {
+    position: absolute;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin: -1px;
+    fill: var(--color-gold-600);
+  }
+</style>

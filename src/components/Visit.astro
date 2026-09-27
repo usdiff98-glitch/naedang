@@ -1,0 +1,251 @@
+---
+import { hongjuFortress, info, quotes } from '../data/restaurant';
+import Icon from './Icon.astro';
+import SectionLabel from './SectionLabel.astro';
+import Seal from './Seal.astro';
+
+const coord = (n: number, pos: string, neg: string) => `${Math.abs(n).toFixed(4)}° ${n >= 0 ? pos : neg}`;
+
+const fortressNote = `${hongjuFortress.rebuilt}에 고쳐 쌓은 읍성입니다. ${hongjuFortress.landmarks.join('·')}을 둘러볼 수 있고, 가까이에 ${hongjuFortress.nearby.join('과 ')}이 있습니다.`;
+const regionNote = `백제 때 우견현(牛見縣), 통일신라 때 목우현(目牛縣)이라 불릴 만큼 예부터 소를 많이 기른 고장입니다. 가까운 ${hongjuFortress.regional.join('과 ')}도 함께 둘러보기 좋습니다.`;
+---
+
+<section id="visit" class="surface-hanji section-y relative" aria-labelledby="visit-title">
+  <div class="container-site">
+    <SectionLabel id="visit" />
+    <h2 id="visit-title" class="mt-8 font-display text-[clamp(2.6rem,6.5vw,4.75rem)] font-normal leading-[1.1] tracking-[-0.02em]" data-reveal="ink">
+      오시는 길
+    </h2>
+
+    <div class="mt-14 grid gap-y-14 lg:mt-20 lg:grid-cols-12 lg:gap-x-16">
+      <div class="lg:col-span-7">
+        <dl class="grid gap-y-0">
+          <div class="visit-row" data-reveal>
+            <dt><Icon name="pin" class="text-gold-700" />주소</dt>
+            <dd>
+              <p class="font-display text-[1.3rem] leading-snug text-ink-900 lg:text-[1.5rem]">{info.address.road}</p>
+              <p class="mt-2 text-[0.9rem] text-ink-500">
+                지번 {info.address.jibun.replace('충남 홍성군 홍성읍 ', '')} · 우편번호 <span class="tabular">{info.address.postalCode}</span>
+              </p>
+              <button
+                type="button"
+                class="copy-btn mt-4 inline-flex min-h-11 items-center gap-2 border border-ink-900/20 px-4 text-[0.85rem] text-ink-700 transition-colors hover:border-ink-900"
+                data-copy={info.address.road}
+              >
+                <Icon name="copy" size={15} />
+                <span data-copy-label aria-live="polite">주소 복사</span>
+              </button>
+            </dd>
+          </div>
+
+          <div class="visit-row" data-reveal>
+            <dt><Icon name="phone" class="text-gold-700" />전화 · 예약</dt>
+            <dd>
+              <a href={info.phoneHref} class="tabular font-display text-[1.6rem] leading-none text-ink-900 underline decoration-gold-600/50 decoration-1 underline-offset-[0.35em] transition-colors hover:text-gold-700 lg:text-[1.9rem]">
+                {info.phone}
+              </a>
+              <p class="mt-4 max-w-md text-[0.95rem] leading-[1.85] text-ink-500">
+                예약은 전화로 받습니다. 주말에는 미리 연락 주시기를 권합니다.
+              </p>
+              <p class="mt-2 text-[0.85rem] text-ink-500">“{quotes.reservation}”</p>
+            </dd>
+          </div>
+
+          <div class="visit-row" data-reveal>
+            <dt><Icon name="clock" class="text-gold-700" />영업시간</dt>
+            <dd>
+              <table class="hours w-full max-w-md text-left">
+                <caption class="sr-only">영업시간</caption>
+                <tbody>
+                  <tr>
+                    <th scope="row">{info.hours.days}</th>
+                    <td class="tabular">{info.hours.open} – {info.hours.close}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">브레이크타임</th>
+                    <td class="tabular">{info.hours.breakStart} – {info.hours.breakEnd}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">휴무</th>
+                    <td>설날 · 추석 연휴 3일</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="open-status mt-5" data-open-status hidden>
+                <p class="flex items-center gap-2.5 text-[0.85rem] text-ink-700">
+                  <span class="status-dot h-2 w-2 shrink-0 rounded-full" aria-hidden="true"></span>
+                  <span data-open-status-text></span>
+                </p>
+                <p class="mt-1 pl-[1.125rem] text-[0.75rem] leading-relaxed text-ink-500">
+                  한국 시간 기준 안내이며, 설날·추석 연휴 휴무는 반영되지 않습니다.
+                </p>
+              </div>
+            </dd>
+          </div>
+
+          <div class="visit-row" data-reveal>
+            <dt><Icon name="car" class="text-gold-700" />주차</dt>
+            <dd>
+              <p class="text-[1.05rem] leading-[1.8] text-ink-900">{info.parking}을 이용해 주세요.</p>
+              <p class="mt-2 text-[0.9rem] leading-[1.8] text-ink-500">주차 요금과 주차권은 방문 전 전화로 확인해 주세요.</p>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div class="location-card surface-ink relative overflow-hidden p-6 min-[400px]:p-8 sm:p-10 lg:sticky lg:top-[calc(var(--header-h)+2rem)]" data-reveal>
+          <svg aria-hidden="true" class="pointer-events-none absolute inset-0 h-full w-full opacity-[0.16]" viewBox="0 0 400 480" preserveAspectRatio="xMidYMid slice">
+            <g fill="none" stroke="var(--color-gold-300)" stroke-width="0.8">
+              {
+                Array.from({ length: 9 }, (_, i) => (
+                  <ellipse cx="250" cy="170" rx={40 + i * 34} ry={28 + i * 26} transform={`rotate(${-18 + i * 2} 250 170)`} />
+                ))
+              }
+            </g>
+          </svg>
+
+          <div class="relative">
+            <div class="flex items-start justify-between">
+              <Seal class="h-20 w-auto" />
+              <p class="tabular text-right text-[0.72rem] leading-relaxed tracking-[0.14em] text-hanji-400">
+                {coord(info.geo.lat, 'N', 'S')}<br />
+                {coord(info.geo.lng, 'E', 'W')}
+              </p>
+            </div>
+
+            <p class="mt-14 text-[0.75rem] tracking-[0.3em] text-gold-400">홍주읍성 맞은편</p>
+            <p class="mt-3 font-display text-[1.7rem] leading-snug text-hanji-50">내당한우</p>
+            <p class="mt-2 text-[0.95rem] leading-relaxed text-hanji-300">{info.address.road}</p>
+
+            <div class="mt-10 grid gap-3">
+              <a href={info.links.naverPlace} target="_blank" rel="noopener" class="btn btn-gold justify-between">
+                <span class="flex items-center gap-2.5"><Icon name="map" />네이버 지도에서 보기</span>
+                <Icon name="external" size={16} />
+                <span class="sr-only">(새 창)</span>
+              </a>
+              <a href={info.links.kakaoMap} target="_blank" rel="noopener" class="btn btn-line-light justify-between">
+                <span class="flex items-center gap-2.5"><Icon name="map" />카카오맵에서 보기</span>
+                <Icon name="external" size={16} />
+                <span class="sr-only">(새 창)</span>
+              </a>
+              <a href={info.phoneHref} class="btn btn-line-light justify-between tabular">
+                <span class="flex items-center gap-2.5"><Icon name="phone" />전화로 길 묻기</span>
+                <span class="hidden text-[0.85rem] text-hanji-300 min-[380px]:inline">{info.phone}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-28 border-t border-ink-900/12 pt-14 lg:mt-36">
+      <div class="grid gap-y-12 lg:grid-cols-12 lg:gap-x-16">
+        <div class="lg:col-span-4">
+          <p class="eyebrow text-gold-700" data-reveal>Nearby</p>
+          <h3 class="mt-6 font-display text-[clamp(1.8rem,3.6vw,2.5rem)] font-normal leading-[1.35]" data-reveal="ink">
+            식사 전후,<br />성곽을 따라 걷기.
+          </h3>
+        </div>
+
+        <div class="grid gap-y-10 sm:grid-cols-2 sm:gap-x-10 lg:col-span-8">
+          <article data-reveal>
+            <h4 class="font-display text-[1.25rem] font-medium">{hongjuFortress.name}</h4>
+            <p class="mt-1 text-[0.8rem] tracking-[0.1em] text-gold-700">사적 · 식당 맞은편</p>
+            <p class="mt-4 text-[0.95rem] leading-[1.9] text-ink-500">{fortressNote}</p>
+          </article>
+          <article data-reveal style="--delay:100ms">
+            <h4 class="font-display text-[1.25rem] font-medium">소의 고장, 홍성</h4>
+            <p class="mt-1 text-[0.8rem] tracking-[0.1em] text-gold-700">홍성군 이야기</p>
+            <p class="mt-4 text-[0.95rem] leading-[1.9] text-ink-500">{regionNote}</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .visit-row {
+    display: grid;
+    gap: 0.75rem;
+    padding-block: 2rem;
+    border-top: 1px solid color-mix(in oklab, var(--color-ink-900) 12%, transparent);
+  }
+
+  .visit-row:last-child {
+    border-bottom: 1px solid color-mix(in oklab, var(--color-ink-900) 12%, transparent);
+  }
+
+  .visit-row dt {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    color: var(--color-ink-500);
+  }
+
+  @media (min-width: 40rem) {
+    .visit-row {
+      grid-template-columns: 9.5rem 1fr;
+      gap: 2rem;
+    }
+
+    .visit-row dt {
+      padding-top: 0.45rem;
+      align-items: flex-start;
+    }
+  }
+
+  .hours th,
+  .hours td {
+    padding-block: 0.5rem;
+    border-bottom: 1px dashed color-mix(in oklab, var(--color-ink-900) 14%, transparent);
+    font-size: 1.02rem;
+  }
+
+  .hours th {
+    width: 8.5rem;
+    font-weight: 400;
+    color: var(--color-ink-500);
+  }
+
+  .hours td {
+    font-family: var(--font-serif);
+    color: var(--color-ink-900);
+    font-size: 1.12rem;
+  }
+
+  .hours tr:last-child th,
+  .hours tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .status-dot {
+    background: var(--color-ink-400);
+  }
+
+  .open-status[data-state='open'] .status-dot {
+    background: #4f7d5c;
+    box-shadow: 0 0 0 4px color-mix(in oklab, #4f7d5c 18%, transparent);
+  }
+
+  .open-status[data-state='break'] .status-dot {
+    background: var(--color-gold-500);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-gold-500) 20%, transparent);
+  }
+
+  .open-status[data-state='closed'] .status-dot {
+    background: var(--color-seal-500);
+  }
+
+  .copy-btn[data-copied] {
+    border-color: var(--color-gold-700);
+    color: var(--color-gold-700);
+  }
+
+  .location-card {
+    box-shadow: 0 40px 80px -40px rgb(20 19 17 / 0.55);
+  }
+</style>

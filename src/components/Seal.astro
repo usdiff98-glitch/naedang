@@ -1,0 +1,45 @@
+---
+import { GLYPH_DANG, GLYPH_NAE } from '../data/glyphs';
+
+interface Props {
+  class?: string;
+  /** Accessible name; omit to mark the seal as decorative. */
+  label?: string;
+  rough?: boolean;
+  color?: string;
+}
+
+const { class: className, label, rough = true, color = 'var(--color-seal-500)' } = Astro.props;
+const uid = `seal-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 1240 2180"
+  xmlns="http://www.w3.org/2000/svg"
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+  focusable="false"
+>
+  <defs>
+    {
+      rough && (
+        <filter id={`${uid}-rough`} x="-4%" y="-4%" width="108%" height="108%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="3" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="22" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      )
+    }
+    <mask id={`${uid}-mask`} maskUnits="userSpaceOnUse" x="0" y="0" width="1240" height="2180">
+      <rect width="1240" height="2180" fill="#fff"></rect>
+      <g fill="#000">
+        <path transform="translate(128 96) scale(0.985)" d={GLYPH_NAE}></path>
+        <path transform="translate(120 1120) scale(0.985)" d={GLYPH_DANG}></path>
+      </g>
+    </mask>
+  </defs>
+  <g filter={rough ? `url(#${uid}-rough)` : undefined}>
+    <rect x="18" y="18" width="1204" height="2144" rx="46" fill={color} mask={`url(#${uid}-mask)`}></rect>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+---
+import { sectionNo, sections, type SectionId } from '../data/nav';
+
+interface Props {
+  id: SectionId;
+  tone?: 'ink' | 'hanji';
+  class?: string;
+}
+
+const { id, tone = 'hanji', class: className } = Astro.props;
+const section = sections.find((s) => s.id === id)!;
+---
+
+<p
+  class:list={['eyebrow', tone === 'ink' ? 'text-gold-400' : 'text-gold-700', className]}
+  data-reveal
+>
+  <span class="tabular">{sectionNo(id)}</span>
+  <span class="opacity-80">{section.en}</span>
+  <span class="sr-only">— </span>
+  <span class="tracking-[0.2em] opacity-80">{section.label}</span>
+</p>

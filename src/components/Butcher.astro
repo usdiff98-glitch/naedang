@@ -1,0 +1,92 @@
+---
+import marblingPhoto from '../assets/photos/salchisal-marbling.jpg';
+import { info, packaging, quotes } from '../data/restaurant';
+import Icon from './Icon.astro';
+import Photo from './Photo.astro';
+import SectionLabel from './SectionLabel.astro';
+---
+
+<section id="butcher" class="surface-ink section-y relative isolate overflow-hidden" aria-labelledby="butcher-title">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -left-40 bottom-0 -z-10 h-[40rem] w-[40rem] rounded-full bg-[radial-gradient(closest-side,color-mix(in_oklab,var(--color-seal-600)_14%,transparent),transparent)]"
+  >
+  </div>
+
+  <div class="container-site grid gap-y-14 lg:grid-cols-12 lg:items-center lg:gap-x-16">
+    <div class="relative lg:col-span-6">
+      <Photo
+        src={marblingPhoto}
+        alt="눈꽃 같은 마블링이 촘촘한 한우 살치살 생고기 근접 사진."
+        sizes="(min-width: 64rem) 46vw, 100vw"
+        class="aspect-[4/5] w-full max-sm:-mx-[var(--gutter)] max-sm:w-[calc(100%+2*var(--gutter))] sm:aspect-[5/4] lg:aspect-[4/5]"
+        position="40% 50%"
+      />
+      <p
+        aria-hidden="true"
+        class="vertical absolute -right-9 top-0 hidden font-display text-[0.8rem] tracking-[0.55em] text-hanji-400 lg:block"
+      >
+        내당한우 정육점
+      </p>
+    </div>
+
+    <div class="lg:col-span-6 lg:pl-4">
+      <SectionLabel id="butcher" tone="ink" />
+      <h2 id="butcher-title" class="mt-8 font-display text-[clamp(2.3rem,5.6vw,4.2rem)] font-normal leading-[1.25] tracking-[-0.02em] text-hanji-50" data-reveal="ink">
+        내당의 한우를,<br />댁에서도.
+      </h2>
+
+      <figure class="mt-10" data-reveal style="--delay:120ms">
+        <blockquote class="font-display text-[1.15rem] leading-[1.95] text-hanji-200 lg:text-[1.3rem]">
+          “{quotes.butcher}”
+        </blockquote>
+        <figcaption class="mt-4 text-[0.8rem] tracking-[0.14em] text-hanji-400">내당한우 인사말 중에서</figcaption>
+      </figure>
+
+      <div class="mt-12 flex flex-col gap-7 sm:flex-row sm:gap-4" data-reveal style="--delay:200ms">
+        <ul class="flex shrink-0 gap-4" aria-label="포장 안내">
+          {
+            packaging.map((p) => (
+              <li class="tag relative flex h-44 w-[5.5rem] items-center justify-center border border-gold-400/35 sm:h-48 sm:w-24">
+                <span class="vertical font-display text-[1.35rem] tracking-[0.4em] text-hanji-50">{p}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="flex max-w-sm flex-col justify-end text-[0.95rem] leading-[1.85] text-hanji-300 sm:max-w-xs sm:pl-2">
+          식당 입구의 정육점에서 고기를 구입하실 수 있으며, 차림표에 적힌 대로 선물포장과 구이포장이 가능합니다.
+        </p>
+      </div>
+
+      <div class="mt-12 flex flex-col gap-4 border-t border-hanji-100/12 pt-8 sm:flex-row sm:items-center sm:justify-between" data-reveal>
+        <p class="text-[0.9rem] leading-relaxed text-hanji-400">정육 가격과 포장 문의는 전화로 부탁드립니다.</p>
+        <a href={info.phoneHref} class="btn btn-line-light tabular">
+          <Icon name="phone" />
+          {info.phone}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tag::before {
+    content: '';
+    position: absolute;
+    top: 0.75rem;
+    left: 50%;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 999px;
+    transform: translateX(-50%);
+    background: var(--color-seal-400);
+  }
+
+  .tag::after {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid color-mix(in oklab, var(--color-gold-400) 14%, transparent);
+    pointer-events: none;
+  }
+</style>

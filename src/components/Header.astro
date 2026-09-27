@@ -1,0 +1,240 @@
+---
+import { info } from '../data/restaurant';
+import { sections } from '../data/nav';
+import Icon from './Icon.astro';
+import Seal from './Seal.astro';
+---
+
+<a
+  href="#main"
+  class="fixed left-4 top-3 z-[70] -translate-y-24 bg-gold-400 px-4 py-2 text-sm font-medium text-ink-950 transition-transform focus:translate-y-0"
+>
+  본문 바로가기
+</a>
+
+<header id="site-header" class="site-header fixed inset-x-0 top-0 z-50 text-hanji-100" data-state="top">
+  <div class="container-site flex h-[var(--header-h)] items-center justify-between gap-6">
+    <a href="#top" class="group flex items-center gap-3.5">
+      <Seal class="h-10 w-auto shrink-0 lg:h-11" />
+      <span class="flex flex-col leading-none">
+        <span class="font-display text-[1.125rem] font-medium tracking-[0.2em] lg:text-[1.2rem]">내당한우<span class="sr-only">, 처음으로</span></span>
+        <span aria-hidden="true" class="mt-1.5 text-[0.625rem] tracking-[0.34em] text-gold-400/90">HONGSEONG</span>
+      </span>
+    </a>
+
+    <nav aria-label="주요 메뉴" class="hidden lg:block">
+      <ul class="flex items-center gap-[clamp(1.25rem,2.4vw,2.5rem)] text-[0.9rem] tracking-[0.06em]">
+        {
+          sections
+            .filter((s) => s.inHeader)
+            .map((s) => (
+              <li>
+                <a href={`#${s.id}`} class="nav-link" data-nav-link={s.id}>
+                  {s.label}
+                </a>
+              </li>
+            ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={info.phoneHref}
+        class="btn btn-line-light hidden !min-h-11 !gap-2 !px-4 !text-[0.85rem] tabular sm:inline-flex"
+      >
+        <Icon name="phone" size={16} />
+        <span><span class="sr-only">전화 예약 </span>{info.phone}</span>
+      </a>
+      <a href={info.phoneHref} class="flex h-11 w-11 items-center justify-center sm:hidden">
+        <Icon name="phone" size={20} />
+        <span class="sr-only">전화 예약 {info.phone}</span>
+      </a>
+      <button
+        type="button"
+        class="-mr-2 flex h-11 items-center gap-2.5 px-2 text-[0.85rem] tracking-[0.12em] lg:hidden"
+        aria-haspopup="dialog"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        data-menu-open
+      >
+        <span>메뉴</span>
+        <Icon name="menu" size={22} />
+      </button>
+    </div>
+  </div>
+</header>
+
+<dialog id="mobile-menu" class="mobile-menu surface-ink" aria-label="사이트 메뉴">
+  <div class="flex min-h-full flex-col">
+    <div class="container-site flex h-[var(--header-h)] items-center justify-between">
+      <span class="flex items-center gap-3.5">
+        <Seal class="h-10 w-auto" />
+        <span class="font-display text-[1.125rem] font-medium tracking-[0.2em]">내당한우</span>
+      </span>
+      <button
+        type="button"
+        class="-mr-2 flex h-11 items-center gap-2.5 px-2 text-[0.85rem] tracking-[0.12em]"
+        data-menu-close
+      >
+        <span>닫기</span>
+        <Icon name="close" size={22} />
+      </button>
+    </div>
+
+    <nav aria-label="모바일 메뉴" class="container-site flex-1 pt-6">
+      <ol class="border-t border-hanji-100/10">
+        {
+          sections.map((s, i) => (
+            <li class="border-b border-hanji-100/10">
+              <a
+                href={`#${s.id}`}
+                class="group flex items-baseline gap-5 py-[1.05rem]"
+                data-nav-link={s.id}
+                data-menu-link
+              >
+                <span class="tabular w-6 text-[0.75rem] tracking-[0.1em] text-gold-400">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span class="font-display text-[1.6rem] leading-tight">{s.label}</span>
+                <span class="ml-auto text-[0.7rem] uppercase tracking-[0.24em] text-hanji-500">{s.en}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+
+    <div class="container-site pb-[calc(2rem+env(safe-area-inset-bottom))] pt-10">
+      <a href={info.phoneHref} class="btn btn-gold w-full tabular">
+        <Icon name="phone" />
+        전화 예약 {info.phone}
+      </a>
+      <p class="mt-5 text-[0.85rem] leading-relaxed text-hanji-400">
+        {info.hours.days} {info.hours.open}–{info.hours.close} · 브레이크타임 {info.hours.breakStart}–{info.hours.breakEnd}
+        <br />
+        {info.address.road}
+      </p>
+    </div>
+  </div>
+</dialog>
+
+<div id="action-bar" class="action-bar fixed inset-x-0 bottom-0 z-40 lg:hidden" data-visible="false">
+  <div class="grid grid-cols-2 border-t border-hanji-100/10 bg-ink-900/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md">
+    <a href={info.phoneHref} class="flex h-14 items-center justify-center gap-2 bg-gold-400 text-[0.95rem] font-medium text-ink-950">
+      <Icon name="phone" />
+      전화 예약
+    </a>
+    <a
+      href={info.links.naverPlace}
+      target="_blank"
+      rel="noopener"
+      class="flex h-14 items-center justify-center gap-2 text-[0.95rem] font-medium text-hanji-100"
+    >
+      <Icon name="pin" />
+      길찾기<span class="sr-only"> (네이버 지도, 새 창)</span>
+    </a>
+  </div>
+</div>
+
+<style>
+  .site-header {
+    transition:
+      background-color 0.5s var(--ease-silk),
+      transform 0.55s var(--ease-silk),
+      box-shadow 0.5s var(--ease-silk);
+  }
+
+  .site-header[data-state='solid'] {
+    background-color: color-mix(in oklab, var(--color-ink-900) 88%, transparent);
+    -webkit-backdrop-filter: blur(14px) saturate(1.1);
+    backdrop-filter: blur(14px) saturate(1.1);
+    box-shadow: 0 1px 0 color-mix(in oklab, var(--color-hanji-100) 8%, transparent);
+  }
+
+  .site-header[data-hidden='true'] {
+    transform: translateY(-100%);
+  }
+
+  .nav-link {
+    position: relative;
+    display: inline-block;
+    padding-block: 0.5rem;
+    color: color-mix(in oklab, var(--color-hanji-100) 82%, transparent);
+    transition: color 0.3s;
+  }
+
+  .nav-link:hover,
+  .nav-link[aria-current='true'] {
+    color: var(--color-gold-300);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -0.2rem;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--color-seal-400);
+    transform: translateX(-50%) scale(0);
+    transition: transform 0.4s var(--ease-silk);
+  }
+
+  .nav-link[aria-current='true']::after {
+    transform: translateX(-50%) scale(1);
+  }
+
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .mobile-menu[open] {
+    animation: menu-in 0.5s var(--ease-silk);
+  }
+
+  .mobile-menu::backdrop {
+    background: transparent;
+  }
+
+  .mobile-menu [aria-current='true'] .font-display {
+    color: var(--color-gold-300);
+  }
+
+  :global(html:has(.mobile-menu[open])) {
+    overflow: hidden;
+  }
+
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-0.75rem);
+    }
+  }
+
+  .action-bar {
+    transform: translateY(100%);
+    transition: transform 0.5s var(--ease-silk);
+  }
+
+  .action-bar[data-visible='true'] {
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu[open] {
+      animation: none;
+    }
+  }
+</style>

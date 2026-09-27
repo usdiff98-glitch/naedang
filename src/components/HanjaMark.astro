@@ -1,0 +1,28 @@
+---
+import { GLYPH_DANG, GLYPH_NAE } from '../data/glyphs';
+
+interface Props {
+  class?: string;
+  /** Extra space between the two characters, in thousandths of an em. */
+  tracking?: number;
+}
+
+// 內堂 drawn from glyph outlines on a 1em-tall, text-like box, so the display
+// wordmark paints immediately instead of waiting for the CJK web font.
+const { class: className, tracking = 20 } = Astro.props;
+const width = 2000 + tracking;
+---
+
+<svg
+  class={className}
+  viewBox={`0 0 ${width} 1000`}
+  style={`width:${width / 1000}em;height:1em`}
+  fill="currentColor"
+  aria-hidden="true"
+  focusable="false"
+>
+  <path class="glyph-nae" d={GLYPH_NAE}></path>
+  <g transform={`translate(${1000 + tracking} 0)`}>
+    <path class="glyph-dang" d={GLYPH_DANG}></path>
+  </g>
+</svg>

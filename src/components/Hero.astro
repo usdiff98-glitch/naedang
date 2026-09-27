@@ -1,0 +1,214 @@
+---
+import heroPhoto from '../assets/photos/salchisal-table.jpg';
+import { info } from '../data/restaurant';
+import HanjaMark from './HanjaMark.astro';
+import Icon from './Icon.astro';
+import Photo from './Photo.astro';
+import Seal from './Seal.astro';
+---
+
+<section id="top" class="hero surface-ink relative isolate overflow-hidden" aria-labelledby="hero-title">
+  <div aria-hidden="true" class="hero-wash pointer-events-none absolute inset-0 -z-10"></div>
+
+  <div
+    class="container-site grid min-h-[100svh] grid-cols-1 content-start pb-28 lg:grid-cols-12 lg:content-center lg:gap-x-12 lg:pb-32 lg:pt-[calc(var(--header-h)+2rem)]"
+  >
+    <figure class="hero-figure relative -mx-[var(--gutter)] lg:order-2 lg:col-span-6 lg:col-start-7 lg:mx-0">
+      <Photo
+        src={heroPhoto}
+        alt="흰 접시 위에 둥글게 펼쳐 담은 한우 살치살. 촘촘한 마블링이 드러나 있고 주변에 생간과 곁들임 찬이 놓여 있다."
+        sizes="(min-width: 64rem) 46vw, 100vw"
+        priority
+        reveal={false}
+        class="hero-photo aspect-square sm:aspect-[4/3] lg:aspect-[1/1.02]"
+        position="50% 55%"
+      />
+      <div aria-hidden="true" class="hero-photo-shade pointer-events-none absolute inset-0 lg:hidden"></div>
+      <figcaption
+        class="absolute bottom-6 right-[var(--gutter)] hidden items-center gap-3 text-[0.75rem] tracking-[0.2em] text-hanji-100/90 lg:right-5 lg:flex"
+      >
+        <span class="h-px w-8 bg-gold-400/80"></span>살치살 · 한우
+      </figcaption>
+      <p
+        aria-hidden="true"
+        class="vertical absolute -right-10 top-0 hidden font-display text-[0.8rem] tracking-[0.5em] text-hanji-400 xl:block"
+      >
+        홍주읍성 맞은편 · {info.signLine}
+      </p>
+      <Seal class="hero-seal absolute -bottom-9 left-5 hidden h-24 w-auto drop-shadow-[0_6px_18px_rgba(0,0,0,.35)] lg:-left-7 lg:block" />
+    </figure>
+
+    <div class="hero-copy relative z-10 -mt-20 sm:-mt-16 lg:order-1 lg:col-span-6 lg:mt-0">
+      <p class="hero-line eyebrow text-gold-400" style="--i:0">충남 홍성 · 홍주읍성 맞은편</p>
+
+      <h1 id="hero-title" class="mt-6 lg:mt-9">
+        <HanjaMark class="hero-hanja block text-hanji-50" />
+        <span class="hero-line mt-3 flex items-center gap-4 font-display text-[1.35rem] font-medium tracking-[0.32em] lg:mt-5 lg:text-[1.6rem]" style="--i:2">
+          내당한우
+          <span class="h-px w-10 bg-hanji-100/35"></span>
+          <span class="font-sans text-[0.8rem] font-normal tracking-[0.2em] text-hanji-300 lg:text-[0.9rem]">{info.signLine}</span>
+        </span>
+      </h1>
+
+      <p class="hero-line mt-8 max-w-[26rem] font-display text-[1.3rem] font-light leading-[1.75] text-hanji-100 lg:mt-12 lg:max-w-none lg:text-[1.75rem]" style="--i:3">
+        정육점을 지나 안으로 들어서면,<br />한우만 굽는 한옥 한 채.
+      </p>
+
+      <div class="hero-line mt-9 flex flex-wrap gap-3 lg:mt-12" style="--i:4">
+        <a href={info.phoneHref} class="btn btn-gold tabular grow sm:grow-0">
+          <Icon name="phone" />
+          전화 예약 {info.phone}
+        </a>
+        <a href="#menu" class="btn btn-line-light grow sm:grow-0">
+          차림표 보기
+          <Icon name="arrow-right" size={16} />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-strip absolute inset-x-0 bottom-0 border-t border-hanji-100/10">
+    <div class="container-site flex min-h-16 flex-wrap items-center gap-x-8 gap-y-1 py-4 text-[0.8rem] tracking-[0.04em] text-hanji-300 lg:min-h-20">
+      <p class="flex items-center gap-2.5">
+        <Icon name="clock" size={15} class="text-gold-400" />
+        <span class="tabular">{info.hours.days} {info.hours.open}–{info.hours.close}</span>
+        <span class="text-hanji-500">·</span>
+        <span class="tabular">브레이크타임 {info.hours.breakStart}–{info.hours.breakEnd}</span>
+      </p>
+      <p class="hidden sm:block">{info.holiday}</p>
+      <a href="#story" class="ml-auto hidden items-center gap-3 text-[0.7rem] uppercase tracking-[0.3em] text-hanji-400 transition-colors hover:text-gold-300 lg:flex">
+        Scroll
+        <span class="scroll-cue relative block h-8 w-px overflow-hidden bg-hanji-100/15"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-wash {
+    background:
+      radial-gradient(60% 55% at 78% 40%, color-mix(in oklab, var(--color-gold-500) 11%, transparent), transparent 70%),
+      radial-gradient(50% 60% at 8% 90%, color-mix(in oklab, var(--color-ink-600) 60%, transparent), transparent 70%);
+  }
+
+  .hero-photo-shade {
+    background:
+      linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--color-ink-900) 88%, transparent) 0%,
+        color-mix(in oklab, var(--color-ink-900) 40%, transparent) 20%,
+        transparent 38%
+      ),
+      linear-gradient(
+        to top,
+        var(--color-ink-900) 6%,
+        color-mix(in oklab, var(--color-ink-900) 82%, transparent) 26%,
+        color-mix(in oklab, var(--color-ink-900) 30%, transparent) 50%,
+        transparent 70%
+      );
+  }
+
+  .hero-copy :global(.hero-hanja) {
+    font-size: clamp(5.5rem, 21vw, 11.5rem);
+    margin-block: -0.04em;
+    animation: ink-in 2.4s var(--ease-ink) both;
+  }
+
+  .hero-copy :global(.glyph-dang) {
+    animation: tracking-in 2.4s var(--ease-ink) both;
+  }
+
+  .hero-line {
+    animation: rise-in 1.3s var(--ease-silk) both;
+    animation-delay: calc(0.45s + var(--i, 0) * 0.16s);
+  }
+
+  .hero-figure :global(.hero-photo) {
+    animation: veil-in 1.8s var(--ease-ink) both;
+  }
+
+  .hero-figure :global(.hero-seal) {
+    animation: stamp-in 0.9s var(--ease-silk) 1.5s both;
+  }
+
+  .scroll-cue::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--color-gold-400);
+    animation: cue 2.4s var(--ease-ink) infinite;
+  }
+
+  @media (min-width: 64rem) {
+    .hero-copy :global(.hero-hanja) {
+      font-size: clamp(8rem, 12.5vw, 12.5rem);
+    }
+  }
+
+  @keyframes ink-in {
+    from {
+      opacity: 0;
+      filter: blur(18px);
+    }
+    55% {
+      opacity: 1;
+    }
+    to {
+      filter: blur(0);
+    }
+  }
+
+  /* SVG user units: 200 = 0.2em, the letter-spacing the wordmark settles from. */
+  @keyframes tracking-in {
+    from {
+      transform: translateX(200px);
+    }
+  }
+
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+  }
+
+  @keyframes veil-in {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @keyframes stamp-in {
+    from {
+      opacity: 0;
+      transform: scale(1.35) rotate(-4deg);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes cue {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(100%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-copy :global(.hero-hanja),
+    .hero-copy :global(.glyph-dang),
+    .hero-line,
+    .hero-figure :global(.hero-photo),
+    .hero-figure :global(.hero-seal),
+    .scroll-cue::after {
+      animation: none;
+    }
+  }
+</style>

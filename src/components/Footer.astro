@@ -1,0 +1,71 @@
+---
+import { info } from '../data/restaurant';
+import { sections } from '../data/nav';
+import HanjaMark from './HanjaMark.astro';
+import Icon from './Icon.astro';
+import Seal from './Seal.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer id="site-footer" class="surface-ink relative overflow-hidden pb-[calc(2.5rem+env(safe-area-inset-bottom))] pt-20 text-hanji-300 lg:pt-28">
+  <HanjaMark
+    class="pointer-events-none absolute -bottom-[0.14em] right-[-0.04em] select-none text-[clamp(9rem,30vw,26rem)] text-hanji-100/[0.035]"
+  />
+
+  <div class="container-site relative">
+    <div class="grid gap-y-14 lg:grid-cols-12 lg:gap-x-12">
+      <div class="lg:col-span-5">
+        <div class="flex items-center gap-4">
+          <Seal class="h-14 w-auto" />
+          <div>
+            <p class="font-display text-[1.5rem] font-medium tracking-[0.2em] text-hanji-50">내당한우</p>
+            <p class="mt-1 text-[0.8rem] tracking-[0.2em] text-hanji-400">{info.hanja} · {info.signLine}</p>
+          </div>
+        </div>
+        <address class="mt-10 not-italic text-[0.95rem] leading-[1.95]">
+          {info.address.road}<br />
+          <a href={info.phoneHref} class="tabular text-hanji-100 underline decoration-hanji-100/30 underline-offset-4 hover:text-gold-300">{info.phone}</a><br />
+          <span class="tabular">{info.hours.days} {info.hours.open}–{info.hours.close}</span> · 브레이크타임 <span class="tabular">{info.hours.breakStart}–{info.hours.breakEnd}</span><br />
+          {info.holiday}
+        </address>
+      </div>
+
+      <nav aria-label="바닥글 메뉴" class="lg:col-span-3 lg:col-start-7">
+        <p class="text-[0.72rem] uppercase tracking-[0.3em] text-gold-400">Contents</p>
+        <ul class="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 text-[0.95rem] lg:grid-cols-1">
+          {
+            sections.map((s) => (
+              <li>
+                <a href={`#${s.id}`} class="transition-colors hover:text-gold-300">
+                  {s.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="lg:col-span-3">
+        <p class="text-[0.72rem] uppercase tracking-[0.3em] text-gold-400">Map</p>
+        <ul class="mt-6 grid gap-3 text-[0.95rem]">
+          <li>
+            <a href={info.links.naverPlace} target="_blank" rel="noopener" class="inline-flex items-center gap-2 transition-colors hover:text-gold-300">
+              네이버 플레이스 <Icon name="external" size={14} /><span class="sr-only">(새 창)</span>
+            </a>
+          </li>
+          <li>
+            <a href={info.links.kakaoMap} target="_blank" rel="noopener" class="inline-flex items-center gap-2 transition-colors hover:text-gold-300">
+              카카오맵 <Icon name="external" size={14} /><span class="sr-only">(새 창)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-20 flex flex-col gap-3 border-t border-hanji-100/10 pt-8 text-[0.78rem] leading-relaxed text-hanji-500 lg:flex-row lg:justify-between">
+      <p>© {year} 내당한우. 사진은 내당한우가 네이버 플레이스에 등록한 사진입니다.</p>
+      <p>메뉴 가격은 <time datetime={info.menuUpdated.iso}>{info.menuUpdated.label}</time> 기준입니다.</p>
+    </div>
+  </div>
+</footer>

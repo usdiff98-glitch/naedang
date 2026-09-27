@@ -1,0 +1,99 @@
+---
+import { getImage } from 'astro:assets';
+import heroPhoto from '../assets/photos/salchisal-table.jpg';
+import signaturePhoto from '../assets/photos/signature-platter.jpg';
+import { formatPrice, info, mealMenu, meatMenu, type MenuItem } from '../data/restaurant';
+import { absoluteUrl } from '../lib/urls';
+
+const site = Astro.site ?? new URL(Astro.url.origin);
+const abs = (path: string) => absoluteUrl(path, site);
+
+// Google recommends 1:1, 4:3 and 16:9 crops for restaurant rich results.
+const crops = await Promise.all([
+  getImage({ src: heroPhoto, width: 667, height: 667, fit: 'cover', format: 'jpg', quality: 82 }),
+  getImage({ src: heroPhoto, width: 888, height: 666, fit: 'cover', format: 'jpg', quality: 82 }),
+  getImage({ src: signaturePhoto, width: 1000, height: 562, fit: 'cover', format: 'jpg', quality: 82 }),
+]);
+
+const everyDay = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(
+  (d) => `https://schema.org/${d}`,
+);
+
+const toMenuItem = (item: MenuItem) => ({
+  '@type': 'MenuItem',
+  name: item.name,
+  ...(item.detail || item.weight
+    ? { description: [item.detail, item.weight, item.hanwoo ? '한우' : undefined].filter(Boolean).join(' · ') }
+    : item.hanwoo
+      ? { description: '한우' }
+      : {}),
+  offers: {
+    '@type': 'Offer',
+    price: item.price,
+    priceCurrency: 'KRW',
+  },
+});
+
+const prices = [...meatMenu, ...mealMenu].map((item) => item.price);
+const priceRange = `₩${formatPrice(Math.min(...prices))}–₩${formatPrice(Math.max(...prices))}`;
+
+const address = {
+  '@type': 'PostalAddress',
+  streetAddress: info.address.street,
+  addressLocality: info.address.locality,
+  addressRegion: info.address.region,
+  postalCode: info.address.postalCode,
+  addressCountry: 'KR',
+};
+
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  '@id': abs('/#restaurant'),
+  name: info.name,
+  alternateName: [info.hanja, info.romanized],
+  description:
+    '충남 홍성 홍주읍성 맞은편의 한우생고기 전문점. 한우만 취급하며 식당 입구에서 정육점을 함께 운영합니다. 모든 좌석이 룸으로 되어 있습니다.',
+  url: abs('/'),
+  image: crops.map((c) => abs(c.src)),
+  telephone: info.phoneE164,
+  address,
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: info.geo.lat,
+    longitude: info.geo.lng,
+  },
+  hasMap: info.links.naverPlace,
+  sameAs: [info.links.naverPlace],
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: everyDay, opens: info.hours.open, closes: info.hours.breakStart },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: everyDay, opens: info.hours.breakEnd, closes: info.hours.close },
+  ],
+  servesCuisine: ['한식', '한우 구이', 'Korean BBQ'],
+  priceRange,
+  acceptsReservations: true,
+  paymentAccepted: info.payment,
+  currenciesAccepted: 'KRW',
+  menu: abs('/#menu'),
+  hasMenu: {
+    '@type': 'Menu',
+    name: '내당한우 차림표',
+    inLanguage: 'ko',
+    hasMenuSection: [
+      { '@type': 'MenuSection', name: '고기류 (한우)', hasMenuItem: meatMenu.map(toMenuItem) },
+      { '@type': 'MenuSection', name: '식사류', hasMenuItem: mealMenu.map(toMenuItem) },
+    ],
+  },
+  amenityFeature: [
+    { '@type': 'LocationFeatureSpecification', name: '개별 룸', value: true },
+    { '@type': 'LocationFeatureSpecification', name: '단체 이용 가능', value: true },
+  ],
+  department: {
+    '@type': 'Store',
+    name: '내당한우 정육점',
+    address,
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(data)} />
