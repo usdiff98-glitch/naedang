@@ -7,8 +7,7 @@
 //
 // Env:
 //   CHROME_PATH      use an installed Chrome instead of Playwright's bundled browser
-//   SCREENSHOT_TIME  pin the page clock (e.g. 2026-09-26T12:30:00+09:00) so the live
-//                    open/closed badge in 오시는 길 shows a predictable state
+//   SCREENSHOT_TIME  pin the page clock (e.g. 2026-09-26T12:30:00+09:00) for repeatable captures
 import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { chromium } from 'playwright';
@@ -22,7 +21,7 @@ const devices = [
   { name: 'mobile', viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true },
 ];
 
-const defaultSections = ['top', 'story', 'signature', 'menu', 'table', 'rooms', 'butcher', 'visit', 'site-footer'];
+const defaultSections = ['top', 'menu', 'signature', 'visit', 'site-footer'];
 const sections = only.length ? only : defaultSections;
 
 await mkdir(outDir, { recursive: true });

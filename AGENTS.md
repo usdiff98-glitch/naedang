@@ -19,10 +19,11 @@ Static Astro 7 + Tailwind v4 one-page site in Korean. See README.md for the full
   All of these are unconfirmed.
 - Menu prices are the Naver Place menu of 2026-04-16. Liquor prices (2019) are intentionally omitted.
 - Quotes must be the owner's own words (Naver Place introduction or the old homepage), captioned as such.
-- Copy is Korean and should read like the restaurant wrote it: short, plain and warm, not promotional.
-  Use mostly 해요체 ("~요", requests as "~세요"). Keep "~입니다/~습니다" for the few places where it sounds
-  natural (the self-introduction, footer notes). Say each fact once per section. Avoid literary words
-  (빚어낸, 품격, 정수, 여정, 선사, 한 채), em dashes and slogan fragments.
+- Keep on-page text minimal (the owner's request): the 內堂 mark and name, short section titles, menu
+  names with weights and prices, hours/break/holidays, address, phone, a one-line reservation note and
+  map links. No descriptive paragraphs, intro prose, long captions or quotes; let photos carry the mood.
+- Any text that is needed stays short and plain Korean (label style or "~요"), with no literary words
+  (빚어낸, 품격, 정수, 여정, 선사, 한 채), em dashes or slogan fragments.
 
 ## Images
 
