@@ -6,19 +6,19 @@ import WindowIllustration from './WindowIllustration.astro';
 const details = [
   {
     title: '본관과 별관',
-    body: '오래된 건물을 깔끔하게 고쳐 본관과 별관으로 쓰고 있습니다. 방 크기는 저마다 다릅니다.',
+    body: '본관에도 별관에도 방이 있어요.',
   },
   {
     title: '소나무와 연못',
-    body: '마당에 소나무와 작은 정원이 있고, 잉어가 사는 연못과 자갈로 만든 우물 모양 조형물도 있습니다.',
+    body: '마당에 소나무가 있고, 연못에는 잉어가 살아요.',
   },
   {
     title: '창 너머 성벽',
-    body: '별관 끝방에 앉으면 창살 너머로 홍주읍성 성벽이 보입니다.',
+    body: '별관 끝방에서는 창밖으로 홍주읍성 성벽이 보여요.',
   },
   {
     title: '조용한 방',
-    body: '홀 없이 모두 방이라 가족끼리 식사하시거나 손님 모시고 이야기 나누기 편합니다.',
+    body: '다른 손님 신경 쓰지 않고 이야기 나누기 좋아요.',
   },
 ];
 
@@ -31,17 +31,17 @@ const occasions = ['가족 모임', '접대', '기념일', '단체 모임'];
       <WindowIllustration class="h-auto w-full drop-shadow-[0_30px_40px_rgba(20,19,17,0.18)]" />
       <figcaption class="mt-5 flex items-center gap-3 text-[0.8rem] tracking-[0.06em] text-ink-500">
         <span class="h-px w-8 bg-gold-600/70"></span>
-        별관 끝방에서 보이는 홍주읍성 (그림)
+        별관 끝방 창밖 풍경 (그림)
       </figcaption>
     </figure>
 
     <div class="lg:col-span-7 lg:pl-4">
       <SectionLabel id="rooms" />
       <h2 id="rooms-title" class="mt-8 font-display text-[clamp(2.4rem,6vw,4.4rem)] font-normal leading-[1.2] tracking-[-0.02em]" data-reveal="ink">
-        자리는 전부<br />방으로 되어 있습니다.
+        자리는 전부<br />방이에요.
       </h2>
       <p class="mt-8 max-w-xl font-display text-[1.15rem] leading-[1.9] text-ink-800 lg:text-[1.3rem]" data-reveal style="--delay:120ms">
-        몇 분이 오붓하게 쓰는 작은 방부터 단체 모임을 할 수 있는 큰 방까지 있습니다. 방은 한옥 느낌으로 꾸몄습니다.
+        방은 한옥 느낌으로 꾸몄어요.
       </p>
 
       <dl class="mt-12 grid gap-x-10 sm:grid-cols-2">
@@ -60,7 +60,7 @@ const occasions = ['가족 모임', '접대', '기념일', '단체 모임'];
           “{quotes.rooms}”
           <span class="mt-1 block font-sans text-[0.75rem] tracking-[0.12em] text-ink-500">사장님 소개글 (예전 홈페이지)</span>
         </p>
-        <ul class="flex flex-wrap gap-2" aria-label="이런 자리에 좋습니다">
+        <ul class="flex flex-wrap gap-2" aria-label="이런 자리에 좋아요">
           {
             occasions.map((o) => (
               <li class="border border-ink-900/15 px-3 py-1.5 text-[0.8rem] tracking-[0.08em] text-ink-700">{o}</li>

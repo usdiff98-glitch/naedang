@@ -158,16 +158,16 @@ function initOpenStatus() {
     let text: string;
     if (t >= 11 * 60 && t < 15 * 60) {
       state = 'open';
-      text = '지금은 영업시간입니다 · 15:00 브레이크타임';
+      text = '지금 영업 중이에요 · 15:00부터 브레이크타임';
     } else if (t >= 15 * 60 && t < 17 * 60) {
       state = 'break';
-      text = '지금은 브레이크타임입니다 · 17:00 저녁 영업';
+      text = '지금은 브레이크타임이에요 · 17:00에 다시 열어요';
     } else if (t >= 17 * 60 && t < 22 * 60) {
       state = 'open';
-      text = '지금은 영업시간입니다 · 22:00까지';
+      text = '지금 영업 중이에요 · 22:00까지';
     } else {
       state = 'closed';
-      text = t < 11 * 60 ? '영업 전입니다 · 오늘 11:00 영업 시작' : '영업이 끝났습니다 · 내일 11:00 영업 시작';
+      text = t < 11 * 60 ? '아직 영업 전이에요 · 11:00에 열어요' : '오늘 영업은 끝났어요 · 내일 11:00에 열어요';
     }
 
     targets.forEach((el) => {
@@ -189,10 +189,10 @@ function initCopy() {
     btn.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(btn.dataset.copy ?? '');
-        if (label) label.textContent = '복사했습니다';
+        if (label) label.textContent = '복사했어요';
         btn.dataset.copied = 'true';
       } catch {
-        if (label) label.textContent = '복사하지 못했습니다';
+        if (label) label.textContent = '복사하지 못했어요';
       }
       setTimeout(() => {
         if (label) label.textContent = original;

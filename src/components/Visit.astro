@@ -6,8 +6,8 @@ import Seal from './Seal.astro';
 
 const coord = (n: number, pos: string, neg: string) => `${Math.abs(n).toFixed(4)}° ${n >= 0 ? pos : neg}`;
 
-const fortressNote = `${hongjuFortress.rebuilt}에 고쳐 쌓은 읍성입니다. ${hongjuFortress.landmarks.join(', ')}을 둘러볼 수 있고, 근처에 ${hongjuFortress.nearby.join('과 ')}도 있습니다.`;
-const regionNote = `홍성은 백제 때 우견현, 통일신라 때 목우현이라고 불렸을 만큼 옛날부터 소를 많이 키운 곳입니다. 가까운 ${hongjuFortress.regional.join('과 ')}도 가 볼 만합니다.`;
+const fortressNote = `${hongjuFortress.rebuilt}에 고쳐 쌓은 읍성이에요. ${hongjuFortress.landmarks.join(', ')}을 둘러볼 수 있고, ${hongjuFortress.nearby.join('과 ')}도 있어요.`;
+const regionNote = `백제 때는 우견현, 통일신라 때는 목우현이라고 불렸을 만큼 옛날부터 소를 많이 키운 곳이에요. 시간 되시면 ${hongjuFortress.regional.join('이나 ')}도 다녀오세요.`;
 ---
 
 <section id="visit" class="surface-hanji section-y relative" aria-labelledby="visit-title">
@@ -45,7 +45,7 @@ const regionNote = `홍성은 백제 때 우견현, 통일신라 때 목우현�
                 {info.phone}
               </a>
               <p class="mt-4 max-w-md text-[0.95rem] leading-[1.85] text-ink-500">
-                예약은 전화로 받습니다. 주말에는 미리 전화 주시는 게 좋습니다.
+                예약은 전화로 받아요. 주말에는 예약하고 오시는 게 좋아요.
               </p>
               <p class="mt-2 text-[0.85rem] text-ink-500">“{quotes.reservation}”</p>
             </dd>
@@ -77,7 +77,7 @@ const regionNote = `홍성은 백제 때 우견현, 통일신라 때 목우현�
                   <span data-open-status-text></span>
                 </p>
                 <p class="mt-1 pl-[1.125rem] text-[0.75rem] leading-relaxed text-ink-500">
-                  한국 시간 기준 안내이며, 설날·추석 연휴 휴무는 반영되지 않습니다.
+                  설날·추석 연휴에 쉬는 건 반영되지 않아요.
                 </p>
               </div>
             </dd>
@@ -86,8 +86,8 @@ const regionNote = `홍성은 백제 때 우견현, 통일신라 때 목우현�
           <div class="visit-row" data-reveal>
             <dt><Icon name="car" class="text-gold-700" />주차</dt>
             <dd>
-              <p class="text-[1.05rem] leading-[1.8] text-ink-900">{info.parking}을 이용해 주세요.</p>
-              <p class="mt-2 text-[0.9rem] leading-[1.8] text-ink-500">주차 요금이나 주차권은 오시기 전에 전화로 물어봐 주세요.</p>
+              <p class="text-[1.05rem] leading-[1.8] text-ink-900">{info.parking}에 세우시면 돼요.</p>
+              <p class="mt-2 text-[0.9rem] leading-[1.8] text-ink-500">주차비나 주차권은 전화로 물어봐 주세요.</p>
             </dd>
           </div>
         </dl>
@@ -144,7 +144,7 @@ const regionNote = `홍성은 백제 때 우견현, 통일신라 때 목우현�
         <div class="lg:col-span-4">
           <p class="eyebrow text-gold-700" data-reveal>Nearby</p>
           <h3 class="mt-6 font-display text-[clamp(1.8rem,3.6vw,2.5rem)] font-normal leading-[1.35]" data-reveal="ink">
-            식사하시고<br />성벽 따라 걸어 보세요.
+            근처에<br />가 볼 만한 곳
           </h3>
         </div>
 
@@ -155,8 +155,8 @@ const regionNote = `홍성은 백제 때 우견현, 통일신라 때 목우현�
             <p class="mt-4 text-[0.95rem] leading-[1.9] text-ink-500">{fortressNote}</p>
           </article>
           <article data-reveal style="--delay:100ms">
-            <h4 class="font-display text-[1.25rem] font-medium">예부터 소를 키우던 홍성</h4>
-            <p class="mt-1 text-[0.8rem] tracking-[0.1em] text-gold-700">홍성군 이야기</p>
+            <h4 class="font-display text-[1.25rem] font-medium">홍성과 소</h4>
+            <p class="mt-1 text-[0.8rem] tracking-[0.1em] text-gold-700">홍성 이야기</p>
             <p class="mt-4 text-[0.95rem] leading-[1.9] text-ink-500">{regionNote}</p>
           </article>
         </div>

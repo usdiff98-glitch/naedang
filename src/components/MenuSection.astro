@@ -13,17 +13,17 @@ const byName = (name: string) => [...meatMenu, ...mealMenu].find((m) => m.name =
 const strip = [
   {
     src: saeusalPhoto,
-    alt: '흰 접시 위에 하트 모양으로 놓인 마블링 가득한 한우 새우살 네 점.',
+    alt: '흰 접시에 하트 모양으로 놓은 한우 새우살 네 점',
     item: byName('새우살'),
   },
   {
     src: salchisalPhoto,
-    alt: '흰 접시에 둥글게 펼쳐 담은 한우 살치살. 눈꽃처럼 촘촘한 마블링.',
+    alt: '흰 접시에 둥글게 담은 한우 살치살',
     item: byName('살치살'),
   },
   {
     src: naengmyeonPhoto,
-    alt: '놋그릇에 담긴 물냉면. 살얼음 육수 위에 면과 삶은 달걀, 채소 고명이 올라가 있다.',
+    alt: '삶은 달걀과 채소를 올린 놋그릇 물냉면',
     item: byName('물냉면'),
   },
 ];
@@ -41,13 +41,13 @@ const strip = [
           “{menuBoardStatement}”
         </blockquote>
         <p class="mt-4 pl-6 text-[0.8rem] tracking-[0.08em] text-ink-500" data-reveal style="--delay:160ms">
-          매장 메뉴판 맨 위에 적힌 글
+          메뉴판 맨 위에 적어 둔 글
         </p>
       </div>
       <figure class="hidden lg:col-span-4 lg:col-start-9 lg:block">
         <Photo
           src={boardPhoto}
-          alt="매장 벽에 걸린 코르크 판 차림표. 고기류와 식사류 가격이 적혀 있다."
+          alt="고기류와 식사류 가격이 적힌 매장 차림표"
           sizes="30vw"
           class="aspect-[3/2] w-full"
         />
@@ -87,8 +87,7 @@ const strip = [
 
       <div class="flex flex-col gap-3 border-t border-ink-900/10 px-5 py-6 text-[0.8rem] leading-relaxed text-ink-500 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-16 xl:px-20">
         <p>
-          가격은 <time datetime={info.menuUpdated.iso}>{info.menuUpdated.label}</time> 기준이라 그사이 바뀌었을 수 있습니다.
-          술과 음료 가격은 매장에서 물어봐 주세요.
+          <time datetime={info.menuUpdated.iso}>{info.menuUpdated.label}</time> 기준 가격이에요. 술과 음료 가격은 매장에 물어봐 주세요.
         </p>
         <a href="#butcher" class="link-arrow shrink-0 self-start text-ink-800 lg:self-auto">
           {packaging.join(' · ')} 안내

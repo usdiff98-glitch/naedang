@@ -1,6 +1,6 @@
 ---
 import grillPhoto from '../assets/photos/saeusal-grill.jpg';
-import { quotes, tableExtraWhenAvailable, tableExtras } from '../data/restaurant';
+import { quotes, tableExtras } from '../data/restaurant';
 import Photo from './Photo.astro';
 import SectionLabel from './SectionLabel.astro';
 
@@ -20,7 +20,7 @@ const extra = { x: 18, y: 76, d: 26 };
     <div class="lg:col-span-5">
       <SectionLabel id="table" tone="ink" />
       <h2 id="table-title" class="mt-8 font-display text-[clamp(2.1rem,6.2vw,3.2rem)] font-normal leading-[1.3] tracking-[-0.02em] text-hanji-50 lg:text-[clamp(2.2rem,3vw,3.2rem)]" data-reveal="ink">
-        고기를 시키시면<br />곁들이는 음식이 같이 나옵니다.
+        고기를 시키시면<br />이렇게 같이 나와요.
       </h2>
 
       <figure class="mt-10 border-l border-gold-500/50 pl-6" data-reveal style="--delay:120ms">
@@ -33,13 +33,13 @@ const extra = { x: 18, y: 76, d: 26 };
       <div class="mt-12 flex items-center gap-5" data-reveal style="--delay:200ms">
         <Photo
           src={grillPhoto}
-          alt="불판 위에서 구워지고 있는 한우 새우살 두 점."
+          alt="불판에서 굽고 있는 한우 새우살 두 점"
           sizes="7rem"
           class="aspect-square w-24 shrink-0 rounded-full sm:w-28"
           reveal={false}
         />
         <p class="text-[0.95rem] leading-[1.85] text-hanji-300">
-          처음에는 직원이 고기를 직접 구워 드리고,<br class="hidden sm:inline" /> 무슨 부위인지도 알려 드립니다.
+          처음에는 직원이 구워 드리면서<br class="hidden sm:inline" /> 어떤 부위인지 알려 드려요.
         </p>
       </div>
     </div>
@@ -77,7 +77,7 @@ const extra = { x: 18, y: 76, d: 26 };
           </span>
         </div>
 
-        <ul aria-label="고기 주문 시 함께 나오는 구성" class="absolute inset-0">
+        <ul aria-label="고기를 시키면 같이 나오는 음식" class="absolute inset-0">
           {
             tableExtras.map((name, i) => {
               const p = layout[name];
@@ -100,8 +100,7 @@ const extra = { x: 18, y: 76, d: 26 };
         </ul>
       </div>
       <p class="mt-6 text-center text-[0.8rem] leading-relaxed text-hanji-400">
-        {tableExtras.join(', ')} 같은 음식이 같이 나오고, {tableExtraWhenAvailable}는 고기가 있는 날 나갑니다.<br />
-        그날 사정에 따라 조금씩 달라질 수 있습니다.
+        날마다 조금씩 다를 수 있어요.
       </p>
     </div>
   </div>

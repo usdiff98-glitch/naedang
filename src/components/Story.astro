@@ -1,25 +1,24 @@
 ---
 import gatePhoto from '../assets/photos/exterior-gate.jpg';
 import courtyardPhoto from '../assets/photos/salchisal-courtyard.jpg';
-import { hongjuFortress } from '../data/restaurant';
 import Photo from './Photo.astro';
 import SectionLabel from './SectionLabel.astro';
 
 const pillars = [
   {
     mark: '一',
-    title: '길 건너 홍주읍성',
-    body: `길 하나 건너면 ${hongjuFortress.rebuilt}에 고쳐 쌓은 홍주읍성입니다. 별관 끝방에 앉으시면 창살 사이로 성벽이 보입니다.`,
+    title: '홍주읍성',
+    body: '식사하시고 성벽 따라 걸어 보세요.',
   },
   {
     mark: '二',
-    title: '입구에 정육점',
-    body: '식당 입구에서 내당한우 정육점을 같이 하고 있습니다. 드시고 가실 때 고기를 사 가셔도 되고, 선물포장과 구이포장도 해 드립니다.',
+    title: '정육점',
+    body: '길가에 있는 정육점도 저희가 해요.',
   },
   {
     mark: '三',
-    title: '한우와 국내산 재료',
-    body: '고기는 한우만 씁니다. 배추, 쌀, 고춧가루, 꽃게, 두부도 모두 국내산입니다.',
+    title: '재료',
+    body: '고기는 한우만 쓰고, 배추·쌀·고춧가루·꽃게·두부도 국내산이에요.',
   },
 ];
 ---
@@ -33,25 +32,24 @@ const pillars = [
           홍주읍성 맞은편<br />한우집입니다.
         </h2>
         <p class="mt-10 max-w-xl font-display text-[1.2rem] leading-[1.9] text-ink-800 lg:text-[1.35rem]" data-reveal style="--delay:120ms">
-          길가 정육점을 지나 안쪽으로 들어오시면 식당이 있습니다. 마당에 소나무와 작은 정원이 있고, 연못에는 잉어가 삽니다.
+          아치형 간판이 걸린 대문으로 들어오시면 식당이에요.
         </p>
         <p class="mt-6 max-w-xl text-[1rem] leading-[1.95] text-ink-500" data-reveal style="--delay:200ms">
-          내당한우는 홍성읍 아문길에 있는 한우 생고기집입니다. 오래된 건물을 손봐서 본관과 별관으로 쓰고 있고,
-          자리는 전부 크고 작은 방이라 다른 손님 신경 쓰지 않고 편하게 드실 수 있습니다.
+          오래된 건물을 깔끔하게 고쳐서 쓰고 있어요.
         </p>
       </div>
 
       <figure class="relative lg:col-span-5 lg:col-start-8">
         <Photo
           src={gatePhoto}
-          alt="내당한우 입구. 소나무 앞 아치형 간판에 內堂, 내당, 한우생고기 전문점이라고 적혀 있고, 나무 대문 너머로 돌길이 안쪽으로 이어진다."
+          alt="內堂, 내당, 한우생고기 전문점이라고 적힌 아치형 간판과 나무 대문"
           sizes="(min-width: 64rem) 36vw, (min-width: 40rem) 28rem, 100vw"
           class="aspect-[2/3] w-full max-sm:-mx-[var(--gutter)] max-sm:w-[calc(100%+2*var(--gutter))] sm:max-w-md lg:max-w-none"
           position="50% 40%"
         />
         <figcaption class="mt-4 flex items-center gap-3 text-[0.8rem] tracking-[0.06em] text-ink-500">
           <span class="h-px w-8 bg-gold-600/70"></span>
-          아치형 간판 아래가 입구입니다
+          식당 입구
         </figcaption>
         <p
           aria-hidden="true"
@@ -66,7 +64,7 @@ const pillars = [
       <figure class="order-2 lg:order-1 lg:col-span-5">
         <Photo
           src={courtyardPhoto}
-          alt="한옥 마당의 돌담과 붉은 기둥을 배경으로 한 접시 가득 담은 한우 살치살을 들어 보이는 모습."
+          alt="돌담과 한옥 앞에서 들고 찍은 한우 살치살 한 접시"
           sizes="(min-width: 64rem) 36vw, calc(100vw - 2.5rem)"
           class="aspect-[4/3] w-full"
           position="48% 50%"
