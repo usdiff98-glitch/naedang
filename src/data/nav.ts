@@ -1,5 +1,5 @@
 export const sections = [
-  { id: 'story', label: '이야기', en: 'Story', inHeader: true },
+  { id: 'story', label: '소개', en: 'Story', inHeader: true },
   { id: 'signature', label: '오늘뭐먹지', en: 'Signature', inHeader: true },
   { id: 'menu', label: '차림표', en: 'Menu', inHeader: true },
   { id: 'table', label: '상차림', en: 'The Table', inHeader: false },
