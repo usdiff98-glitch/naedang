@@ -20,14 +20,14 @@ const extra = { x: 18, y: 76, d: 26 };
     <div class="lg:col-span-5">
       <SectionLabel id="table" tone="ink" />
       <h2 id="table-title" class="mt-8 font-display text-[clamp(2.1rem,6.2vw,3.2rem)] font-normal leading-[1.3] tracking-[-0.02em] text-hanji-50 lg:text-[clamp(2.2rem,3vw,3.2rem)]" data-reveal="ink">
-        고기를 주문하시면,<br />한 상이 함께 차려집니다.
+        고기를 시키시면<br />곁들이는 음식이 같이 나옵니다.
       </h2>
 
       <figure class="mt-10 border-l border-gold-500/50 pl-6" data-reveal style="--delay:120ms">
         <blockquote class="font-display text-[1.08rem] leading-[1.95] text-hanji-200 lg:text-[1.15rem]">
           “{quotes.extras}”
         </blockquote>
-        <figcaption class="mt-4 text-[0.8rem] tracking-[0.14em] text-hanji-400">내당한우 소개글 중에서</figcaption>
+        <figcaption class="mt-4 text-[0.8rem] tracking-[0.14em] text-hanji-400">사장님 소개글 (네이버 플레이스)</figcaption>
       </figure>
 
       <div class="mt-12 flex items-center gap-5" data-reveal style="--delay:200ms">
@@ -39,7 +39,7 @@ const extra = { x: 18, y: 76, d: 26 };
           reveal={false}
         />
         <p class="text-[0.95rem] leading-[1.85] text-hanji-300">
-          처음에는 직원이 고기를 구워 드리며<br class="hidden sm:inline" /> 부위를 설명해 드립니다.
+          처음에는 직원이 고기를 직접 구워 드리고,<br class="hidden sm:inline" /> 무슨 부위인지도 알려 드립니다.
         </p>
       </div>
     </div>
@@ -100,8 +100,8 @@ const extra = { x: 18, y: 76, d: 26 };
         </ul>
       </div>
       <p class="mt-6 text-center text-[0.8rem] leading-relaxed text-hanji-400">
-        {tableExtras.join(' · ')} 등이 함께 나오며, {tableExtraWhenAvailable}는 물량이 있을 때 나갑니다.<br />
-        구성은 그날 사정에 따라 달라질 수 있습니다.
+        {tableExtras.join(', ')} 같은 음식이 같이 나오고, {tableExtraWhenAvailable}는 고기가 있는 날 나갑니다.<br />
+        그날 사정에 따라 조금씩 달라질 수 있습니다.
       </p>
     </div>
   </div>
