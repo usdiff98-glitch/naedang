@@ -41,7 +41,7 @@ const strip = [
           “{menuBoardStatement}”
         </blockquote>
         <p class="mt-4 pl-6 text-[0.8rem] tracking-[0.08em] text-ink-500" data-reveal style="--delay:160ms">
-          — 매장 차림표 머리말
+          매장 메뉴판 맨 위에 적힌 글
         </p>
       </div>
       <figure class="hidden lg:col-span-4 lg:col-start-9 lg:block">
@@ -87,8 +87,8 @@ const strip = [
 
       <div class="flex flex-col gap-3 border-t border-ink-900/10 px-5 py-6 text-[0.8rem] leading-relaxed text-ink-500 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-16 xl:px-20">
         <p>
-          가격은 <time datetime={info.menuUpdated.iso}>{info.menuUpdated.label}</time> 기준이며, 시기와 매장 사정에 따라 달라질 수
-          있습니다. 주류·음료 가격은 매장에 문의해 주세요.
+          가격은 <time datetime={info.menuUpdated.iso}>{info.menuUpdated.label}</time> 기준이라 그사이 바뀌었을 수 있습니다.
+          술과 음료 가격은 매장에서 물어봐 주세요.
         </p>
         <a href="#butcher" class="link-arrow shrink-0 self-start text-ink-800 lg:self-auto">
           {packaging.join(' · ')} 안내
