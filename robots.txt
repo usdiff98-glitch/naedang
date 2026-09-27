@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /naedang/
+
+Sitemap: https://usdiff98-glitch.github.io/naedang/sitemap-index.xml

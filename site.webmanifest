@@ -1,0 +1,28 @@
+{
+  "name": "내당한우 內堂",
+  "short_name": "내당한우",
+  "description": "충남 홍성 홍주읍성 맞은편 한우생고기 전문점",
+  "lang": "ko",
+  "start_url": "/naedang/",
+  "display": "browser",
+  "background_color": "#f4efe5",
+  "theme_color": "#141311",
+  "icons": [
+    {
+      "src": "/naedang/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/naedang/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/naedang/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
