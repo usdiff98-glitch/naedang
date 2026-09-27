@@ -49,12 +49,12 @@ parking page.
 | # | Anchor | Section | Content |
 |---|---|---|---|
 | — | `#top` | Hero | 內堂 wordmark, one-line story, call button, hours strip |
-| 01 | `#story` | 이야기 | Hanok rooms across from 홍주읍성, the butcher shop at the entrance, hanwoo only with Korean-origin 배추·쌀·고춧가루·꽃게·두부 |
-| 02 | `#signature` | 오늘뭐먹지 | The signature platter (부채·치마·갈비, 150g 45,000원); where the name comes from (Olive 〈신동엽, 성시경의 오늘 뭐 먹지?〉 ep. 105); all four TV appearances |
+| 01 | `#story` | 소개 | Across from 홍주읍성: the arched-sign gate, the butcher shop on the street, hanwoo only with Korean-origin 배추·쌀·고춧가루·꽃게·두부 |
+| 02 | `#signature` | 오늘뭐먹지 | The signature platter (부채·치마·갈비, 150g 45,000원), made from the special cuts shown on Olive 〈신동엽, 성시경의 오늘 뭐 먹지?〉 ep. 105; all four TV appearances |
 | 03 | `#menu` | 차림표 | Full menu with weights and prices (Naver, 2026-04-16) and the menu board's origin statement |
 | 04 | `#table` | 상차림 | Illustrated table: 육회, 생간, 허파전, 더덕구이 and 알밥 come with meat orders; 꼬리살 육사시미 when available |
-| 05 | `#rooms` | 공간 | Private rooms in 본관 and 별관, the courtyard, and the fortress wall seen through the window. There is no interior photo, so this section uses an illustrated window |
-| 06 | `#butcher` | 정육 · 선물 | The butcher shop, 선물포장 and 구이포장 |
+| 05 | `#rooms` | 매장 | Private rooms in 본관 and 별관, the courtyard, and the fortress wall seen through the window. There is no interior photo, so this section uses an illustrated window |
+| 06 | `#butcher` | 정육점 | The butcher shop, 선물포장 and 구이포장 |
 | 07 | `#visit` | 오시는 길 | Address with a copy button, click-to-call, hours with a live open/closed status (KST), holiday closure, parking, Naver and Kakao map links, nearby 홍주읍성 |
 
 On phones, a bottom action bar ("전화 예약" / "길찾기") appears after the hero, and the header menu
@@ -113,7 +113,7 @@ Chrome instead.
 - Do not claim a 1++ grade, 암소, 홍성한우 brand certification, a founding year or awards. None of these
   is confirmed.
 - Quotes are the owner's own words from the Naver Place introduction and the old homepage. They are
-  captioned as "내당한우 인사말/소개글 중에서".
+  captioned as "사장님 인사말" or "사장님 소개글" with the source (네이버 플레이스 or 예전 홈페이지).
 
 ## Facts left out or flagged
 
@@ -125,8 +125,8 @@ These are not on the site because the sources are unconfirmed or conflict:
 - **Free parking ticket:** most reviews say the restaurant's ticket makes the public lot free, but one
   says the lot is paid. The site names the lot (홍주성 역사공원 옆 공영주차장) and asks visitors to
   confirm the fee or ticket by phone.
-- **Liquor and drink prices:** these come only from a 2019 board, so the site says "주류·음료 가격은
-  매장에 문의해 주세요".
+- **Liquor and drink prices:** these come only from a 2019 board, so the site says "술과 음료 가격은
+  매장에 물어봐 주세요".
 - **Founding year:** the 1994-08-12 permit date may belong to the butcher shop, so the site makes no
   "since" claim.
 - **Owner name:** 서용희 comes from the old homepage and may be out of date, so no name is shown.
@@ -138,8 +138,8 @@ These are not on the site because the sources are unconfirmed or conflict:
 
 These are on the site but worth confirming with the restaurant:
 
-- **"한옥":** sources describe a "한옥 콘셉트" interior in a remodeled older building. The hero line
-  "한우만 굽는 한옥 한 채" treats the building as a hanok. Use "한옥풍" if the owner prefers.
+- **"한옥":** sources describe a "한옥 콘셉트" interior in a remodeled older building, so the rooms
+  section says "방은 한옥 느낌으로 꾸몄어요" rather than calling the building a hanok.
 - **Closing time:** 22:00 follows Naver, the tourism data and most blogs. One 2025 blog says 21:30.
 - **Seasonal and meal notes:** "겨울 한정" for 소면 is from Naver only. "된장찌개 포함" for 공기밥 is from the
   menu-board photo.
